@@ -1,0 +1,242 @@
+/* ==========================================================================
+   HOLIDAY CARD STYLESHEET (2025 REVISION)
+   ========================================================================== */
+
+/* 1. GLOBAL VARIABLES & RESET
+   --------------------------------------------------------------------------
+   We use variables (starting with --) so you can change the color scheme 
+   of the entire site by editing just these few lines.
+*/
+:root {
+    /* The primary color used for headings and borders (SeaGreen) */
+    --primary-color: #2E8B57; 
+    
+    /* The accent color used for the main title and sign-off (Holiday Red) */
+    --accent-color: #D32F2F;  
+    
+    /* Standard text color (Dark Grey is easier to read than pure black) */
+    --text-color: #333;
+    
+    /* Font stacks: The browser will try the first font, then the next... */
+    --font-main: "Times New Roman", Times, serif;
+    --font-heading: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px; /* Adds breathing room around the whole page */
+    text-align: center; /* Centers all text by default */
+    background-color: #fff;
+}
+
+
+/* 2. TYPOGRAPHY
+   --------------------------------------------------------------------------
+   Styles for headings, messages, and signatures.
+   We use 'rem' units for size (relative to the root html size) instead of 
+   fixed 'px', which is better for accessibility.
+*/
+h1.main-title {
+    color: var(--accent-color);
+    font-size: 50rem; 
+    margin-bottom: 20px;
+    font-family: var(--font-heading);
+    line-height: 1.1; /* Tightens the space between lines in big headers */
+}
+
+h2.section-title {
+    color: var(--primary-color);
+    font-size: 20rem;
+    margin: 40px 0 20px 0;
+    text-transform: uppercase; /* Forces text to ALL CAPS automatically */
+    font-family: var(--font-heading);
+}
+
+.message-text {
+    font-size: 7rem;
+    line-height: 1.5; /* Adds space between lines for readability */
+    max-width: 800px; /* Prevents text from stretching too wide on huge monitors */
+    margin: 0 auto;   /* Centers the text block horizontally */
+    color: var(--primary-color);
+    text-align: left; 
+}
+
+.sign-off {
+    font-size: 12rem;
+    margin-top: 30px;
+    color: var(--accent-color);
+    font-style: italic;
+}
+
+
+/* 3. DECORATIVE ELEMENTS
+   --------------------------------------------------------------------------
+*/
+hr.divider {
+    border: 0;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 50px auto; /* 50px space top/bottom, auto centers it left/right */
+    width: 50%;        /* The line is only half the width of the screen */
+    border-radius: 2px; /* Rounds the edges of the line */
+}
+
+
+/* 4. IMAGES & FIGURES
+   --------------------------------------------------------------------------
+   Global rules for all images to ensure they behave responsively.
+*/
+img {
+    max-width: 100%; /* CRITICAL: Ensures images never overflow their container */
+    height: auto;    /* CRITICAL: Keeps the image aspect ratio correct */
+    border-radius: 8px; /* Softens the sharp corners of photos */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Adds a subtle shadow for depth */
+}
+
+/* Specific style for the big main image at the top */
+.hero-image {
+    width: 100%;
+    max-width: 1200px; /* Stops the image from getting too huge on 4k screens */
+    margin: 0 auto;
+    display: block;
+}
+
+
+/* 5. THE "OUT-TAKES" GALLERY (GRID SYSTEM)
+   --------------------------------------------------------------------------
+   This replaces the old HTML <table> layout. It automatically arranges
+   photos based on screen size.
+*/
+.gallery-grid {
+    display: grid;
+    /* MAGIC LINE: Creates columns that are at least 300px wide. 
+       If the screen is wide, it fits 3 or 4 columns. 
+       If narrow, it drops to 1 column. */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* The space between the photos */
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    align-items: end; /* Aligns captions to the bottom if images vary in height */
+}
+
+/* The card container for each photo + caption */
+.gallery-item {
+    margin: 0; 
+    background: #f9f9f9; /* Light grey background behind the photo */
+    padding: 15px;
+    border-radius: 10px;
+    /* Flex allows us to stack the caption and image neatly */
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-end;
+}
+
+.gallery-item img {
+    max-height: 250px; /* Stops image from getting taller than this */
+    width: 100%;       /* Ensures it still fills the card width */
+    object-fit: cover; /* CROPS the image if necessary so it doesn't stretch */
+    object-position: center top; /* Focuses on faces (usually at top) */
+}
+
+.gallery-caption {
+    font-size: 5rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 10px; /* Space between caption and photo */
+    display: block;
+}
+
+
+/* 6. VIDEO STYLING
+   --------------------------------------------------------------------------
+*/
+video.responsive-video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: block;
+    margin: 0 auto;
+}
+
+
+/* 7. UTILITY CLASSES
+   --------------------------------------------------------------------------
+   Helpers for manual overrides if needed.
+*/
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES (MOBILE OPTIMIZATION)
+   ==========================================================================
+   These rules only apply when the screen is smaller than 600px (e.g. phones).
+*/
+@media (max-width: 600px) {
+    h1.main-title {
+        font-size: 3rem; /* Shrinks header from 5rem to 3rem */
+    }
+    h2.section-title {
+        font-size: 2rem; /* Shrinks section titles */
+    }
+    .message-text {
+        font-size: 1.2rem; /* Makes body text smaller but readable */
+        padding: 0 10px;   /* Adds side padding so text doesn't touch screen edges */
+    }
+    .gallery-grid {
+        gap: 15px; /* Reduces the gap between photos on small screens */
+    }
+}
+
+
+/* ==========================================================================
+   PRINT STYLESHEET
+   ==========================================================================
+   These rules apply automatically when someone tries to Print (Ctrl+P).
+*/
+@media print {
+    /* 1. Reset Colors for Ink Saving */
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt;
+    }
+
+    h1, h2, h3, p, div, .message-text, .sign-off {
+        color: black !important; 
+        text-shadow: none !important;
+    }
+
+    /* 2. Hide Non-Printable Elements */
+    /* Hides videos since you can't watch them on paper */
+    video, .responsive-video, audio, iframe {
+        display: none !important;
+    }
+
+    /* 3. Layout Fixes for Paper */
+    .gallery-grid {
+        display: block; /* Grids can be buggy in print; block is safer */
+    }
+
+    .gallery-item {
+        /* CRITICAL: Prevents a photo from being cut in half across two pages */
+        page-break-inside: avoid; 
+        break-inside: avoid;
+        margin-bottom: 20px;
+        box-shadow: none; /* Removes shadows (they print blurry) */
+        border: 1px solid #ddd; /* Adds a nice simple frame instead */
+    }
+
+    /* 4. Clean Up */
+    hr.divider {
+        display: none; /* Hides the decorative green lines */
+    }
+    footer {
+        page-break-inside: avoid;
+    }
+}

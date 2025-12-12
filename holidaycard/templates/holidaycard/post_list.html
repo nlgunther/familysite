@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Holidays from the Gunthers!</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/holidaycard.css' %}">
+</head>
+<body>
+
+    <header>
+        <h1 class="main-title">Happy Holidays!</h1>
+        
+        <figure>
+            <img class="hero-image" src="{% static 'images/collage2025_red.jpg' %}" alt="2025 Year in Review Collage">
+        </figure>
+    </header>
+
+    <main>
+        <h2 class="section-title">2025 In Review</h2>
+        
+        <div class="message-text">
+            {{ posts.last.text|linebreaksbr }}
+        </div>
+
+        <hr class="divider">
+
+        <div class="sign-off">
+            <p>And a Happy New Year!</p>
+            <p>Nick, Susanna,<br>John, David & Adam<br>Gunther</p>
+        </div>
+
+        <hr class="divider">
+    </main>
+
+    <h2 class="section-title">Outtakes...</h2>
+    
+    <section class="gallery-grid">
+
+        <figure class="gallery-item">
+            <figcaption class="gallery-caption">I Told You Not to Throw the Paint!</figcaption>
+            <img src="{% static 'images/colors_red.jpg' %}" alt="Painting mess">
+        </figure>
+
+        <figure class="gallery-item">
+            <figcaption class="gallery-caption">Less Art, More Fun!</figcaption>
+            <img src="{% static 'images/less_art_red.jpg' %}" alt="Fun art">
+        </figure>
+
+        <figure class="gallery-item">
+            <figcaption class="gallery-caption">Mom, Dad, I've Got a Little Problem</figcaption>
+            <img src="{% static 'images/mask_red.jpg' %}" alt="David's Mask">
+        </figure>
+
+        <figure class="gallery-item">
+            <figcaption class="gallery-caption">The Windows</figcaption>
+            <img src="{% static 'images/windows.jpg' %}" alt="Adam dancing">
+        </figure>
+
+        <figure class="gallery-item">
+            <figcaption class="gallery-caption">French Daycare is Different from Ours</figcaption>
+            <img src="{% static 'images/orsay_playroom_ceiling.jpg' %}" alt="Orsay Playroom">
+        </figure>
+
+        <figure class="gallery-item">
+          <figcaption class="gallery-caption">Lion Dismayed by Childish Behavior</figcaption>
+          <img src="{% static 'images/lions_and_sillyboys.jpg' %}" alt="Louvre Lion">
+      </figure>
+
+
+        <!-- <figure class="gallery-item"> How
+            <figcaption class="gallery-caption">Masters of Disguise</figcaption>
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <img src="{% static 'images/john_disguise.jpg' %}" alt="John disguised" style="width: 48%;">
+                <img src="{% static 'images/adam_disguise.jpg' %}" alt="Adam disguised" style="width: 48%;">
+            </div>
+        </figure> -->
+
+        <figure class="gallery-item">
+            <figcaption class="gallery-caption">Not-So-Jolly Green Giants</figcaption>
+            <img src="{% static 'images/momboysstatues.jpg' %}" alt="Mom, Boys and Statues">
+        </figure>
+
+        <figure class="gallery-item">
+            <figcaption class="gallery-caption">Three Out of Five</figcaption>
+            <img src="{% static 'images/momdadjohn.jpg' %}" alt="Mom, Boys and Statues">
+        </figure>
+
+    </section>
+
+<figure class="gallery-item">
+    <figcaption class="gallery-caption">Holiday Highlights - David's Two-Hands</figcaption>
+    
+    <video controls class="responsive-video" poster="{% static 'images/video_thumbnail.jpg' %}" style="width: 20%;">
+        <source src="{% static 'video/david_duet - Trim.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</figure>
+
+    <footer>
+        <h2 class="section-title">Did Someone Say "Grandchildren"?</h2>
+        <figure>
+            <img class="hero-image" style="max-width: 600px;" src="{% static 'images/grandkids_web.jpg' %}" alt="Kai and Elli">
+        </figure>
+    </footer>
+
+    <br><br>
+
+</body>
+</html>
