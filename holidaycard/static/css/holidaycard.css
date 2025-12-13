@@ -1,8 +1,7 @@
 html {
-    font-size: 12px; /* Forces a consistent base (1rem = 16px) everywhere */
-    -webkit-text-size-adjust: 100%; /* Stops Chrome Mobile from auto-inflating text */
+    font-size: 16px; /* Forces Chrome to stop inflating the text size */
+    -webkit-text-size-adjust: 100%; /* Disables mobile text inflation */
 }
-
 /* ==========================================================================
    HOLIDAY CARD STYLESHEET (2025 REVISION)
    ========================================================================== */
@@ -60,12 +59,19 @@ h2.section-title {
 }
 
 .message-text {
-    font-size: 7rem;
-    line-height: 1.5; /* Adds space between lines for readability */
-    max-width: 1100px; /* Prevents text from stretching too wide on huge monitors */
-    margin: 0 auto;   /* Centers the text block horizontally */
+    /* Font Sizing */
+    font-size: 5rem; /* Reduced slightly (approx 24px) for better fitting */
+    line-height: 1.6;
+    
+    /* Layout & Width - The Important Part */
+    width: 90%;         /* Forces the box to fill 90% of the screen width */
+    max-width: 3000px;  /* Stops it from getting too wide on huge monitors */
+    margin: 0 auto;     /* Centers the box itself */
+    
+    /* Text Alignment */
+    text-align: left;
     color: var(--primary-color);
-    text-align: left; 
+    box-sizing: border-box; /* Ensures padding doesn't break the width */
 }
 
 .sign-off {
