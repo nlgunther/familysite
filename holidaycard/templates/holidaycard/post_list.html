@@ -3,15 +3,179 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Happy Holidays from the Gunthers!</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'css/holidaycard.css' %}">
+    
+    <style>
+    /* ==========================================================================
+       HOLIDAY CARD STYLES - All-in-one (2025)
+       ========================================================================== */
+    
+    /* ----- Variables ----- */
+    :root {
+        --primary: #2E8B57;
+        --accent: #D32F2F;
+        --text: #333;
+    }
+    
+    /* ----- Reset & Base ----- */
+    *, *::before, *::after { box-sizing: border-box; }
+    
+    html {
+        font-size: 16px;
+        -webkit-text-size-adjust: 100%;
+    }
+    
+    body {
+        font-family: "Times New Roman", Times, serif;
+        color: var(--text);
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+        background: #fff;
+    }
+    
+    /* ----- Typography ----- */
+    h1.main-title {
+        color: var(--accent);
+        font-size: 3.5rem;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        margin-bottom: 20px;
+        line-height: 1.1;
+    }
+    
+    h2.section-title {
+        color: var(--primary);
+        font-size: 2rem;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-transform: uppercase;
+        margin: 40px 0 20px;
+    }
+    
+    .message-text {
+        font-size: 1.25rem;
+        line-height: 1.7;
+        width: 90%;
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: left;
+        color: var(--primary);
+    }
+    
+    .sign-off {
+        font-size: 1.5rem;
+        font-style: italic;
+        color: var(--accent);
+        margin-top: 30px;
+    }
+    
+    /* ----- Divider ----- */
+    hr.divider {
+        border: none;
+        height: 4px;
+        background: var(--primary);
+        width: 50%;
+        margin: 50px auto;
+        border-radius: 2px;
+    }
+    
+    /* ----- Images ----- */
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .hero-image {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    /* ----- Gallery Grid ----- */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+        align-items: end;
+    }
+    
+    .gallery-item {
+        margin: 0;
+        background: #f9f9f9;
+        padding: 15px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    
+    .gallery-item img {
+        max-height: 250px;
+        width: 100%;
+        object-fit: cover;
+        object-position: center top;
+    }
+    
+    .gallery-caption {
+        font-size: 1.1rem;
+        font-weight: bold;
+        font-style: italic;
+        color: var(--primary);
+        margin-bottom: 10px;
+    }
+    
+    /* ----- Video ----- */
+    video.responsive-video {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        display: block;
+        margin: 0 auto;
+    }
+    
+    /* ----- Responsive ----- */
+    @media (max-width: 768px) {
+        h1.main-title { font-size: 2.5rem; }
+        h2.section-title { font-size: 1.5rem; }
+        .message-text { font-size: 1.1rem; width: 95%; }
+        .sign-off { font-size: 1.25rem; }
+        .gallery-caption { font-size: 1rem; }
+    }
+    
+    @media (max-width: 480px) {
+        h1.main-title { font-size: 2rem; }
+        h2.section-title { font-size: 1.25rem; }
+        .message-text { font-size: 1rem; padding: 0 10px; }
+        .gallery-grid { gap: 15px; padding: 10px; }
+    }
+    
+    /* ----- Print ----- */
+    @media print {
+        body { background: white; color: black; }
+        h1, h2, .message-text, .sign-off, .gallery-caption { color: black !important; }
+        video { display: none; }
+        .gallery-grid { display: block; }
+        .gallery-item { 
+            page-break-inside: avoid; 
+            box-shadow: none; 
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        hr.divider { display: none; }
+    }
+    </style>
 </head>
 <body>
 
     <header>
         <h1 class="main-title">Happy Holidays!</h1>
-        
         <figure>
             <img class="hero-image" src="{% static 'images/collage2025_red.jpg' %}" alt="2025 Year in Review Collage">
         </figure>
@@ -28,7 +192,7 @@
 
         <div class="sign-off">
             <p>And a Happy New Year!</p>
-            <p>Nick, Susanna,<br>John, David & Adam<br>Gunther</p>
+            <p>Nick, Susanna,<br>John, David &amp; Adam<br>Gunther</p>
         </div>
 
         <hr class="divider">
@@ -64,18 +228,9 @@
         </figure>
 
         <figure class="gallery-item">
-          <figcaption class="gallery-caption">Lion Dismayed by Childish Behavior</figcaption>
-          <img src="{% static 'images/lions_and_sillyboys.jpg' %}" alt="Louvre Lion">
-      </figure>
-
-
-        <!-- <figure class="gallery-item"> How
-            <figcaption class="gallery-caption">Masters of Disguise</figcaption>
-            <div style="display: flex; gap: 10px; justify-content: center;">
-                <img src="{% static 'images/john_disguise.jpg' %}" alt="John disguised" style="width: 48%;">
-                <img src="{% static 'images/adam_disguise.jpg' %}" alt="Adam disguised" style="width: 48%;">
-            </div>
-        </figure> -->
+            <figcaption class="gallery-caption">Lion Dismayed by Childish Behavior</figcaption>
+            <img src="{% static 'images/lions_and_sillyboys.jpg' %}" alt="Louvre Lion">
+        </figure>
 
         <figure class="gallery-item">
             <figcaption class="gallery-caption">Not-So-Jolly Green Giants</figcaption>
@@ -84,19 +239,18 @@
 
         <figure class="gallery-item">
             <figcaption class="gallery-caption">Three Out of Five</figcaption>
-            <img src="{% static 'images/momdadjohn.jpg' %}" alt="Mom, Boys and Statues">
+            <img src="{% static 'images/momdadjohn.jpg' %}" alt="Mom, Dad and John">
         </figure>
 
     </section>
 
-<figure class="gallery-item">
-    <figcaption class="gallery-caption">Holiday Highlights - David's Two-Hands</figcaption>
-    
-    <video controls class="responsive-video" poster="{% static 'images/video_thumbnail.jpg' %}" style="width: 20%;">
-        <source src="{% static 'video/david_duet - Trim.mp4' %}" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</figure>
+    <figure class="gallery-item" style="max-width: 500px; margin: 40px auto;">
+        <figcaption class="gallery-caption">Holiday Highlights - David's Two-Hands</figcaption>
+        <video controls class="responsive-video" poster="{% static 'images/video_thumbnail.jpg' %}">
+            <source src="{% static 'video/david_duet - Trim.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </figure>
 
     <footer>
         <h2 class="section-title">Did Someone Say "Grandchildren"?</h2>
