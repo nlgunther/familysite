@@ -1,3 +1,8 @@
+html {
+    font-size: 16px; /* Forces a consistent base (1rem = 16px) everywhere */
+    -webkit-text-size-adjust: 100%; /* Stops Chrome Mobile from auto-inflating text */
+}
+
 /* ==========================================================================
    HOLIDAY CARD STYLESHEET (2025 REVISION)
    ========================================================================== */
